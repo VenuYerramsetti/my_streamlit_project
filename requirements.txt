@@ -1,0 +1,6 @@
+streamlit==1.12.0
+yfinance
+pandas
+prophet
+plotly
+matplotlib
