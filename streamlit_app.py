@@ -28,7 +28,7 @@ forecast_options = {
 forecast_choice = st.sidebar.selectbox("Forecast period", list(forecast_options.keys()))
 period = forecast_options[forecast_choice]
 
-@st.cache_data(ttl=3600)
+@st.cache(ttl=3600)
 def load_data(ticker_symbol):
     try:
         data = yf.download(ticker_symbol, period="5y", auto_adjust=True)
