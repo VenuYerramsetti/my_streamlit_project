@@ -1,6 +1,7 @@
-streamlit==1.12.0
-yfinance
-pandas
-prophet
-plotly
-matplotlib
+streamlit>=1.28.0
+pandas>=1.5
+yfinance>=0.2
+plotly>=5.0
+matplotlib>=3.5
+prophet==1.2
+cmdstanpy>=1.0.0
