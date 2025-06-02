@@ -1,7 +1,6 @@
 streamlit==1.15.1
 yfinance==0.2.36
-pandas==2.2.2
+pandas==1.5.3
 plotly==5.21.0
-prophet==1.1.5
-pystan==2.19.1.1
+neuralprophet==0.5.2
 matplotlib==3.8.4
