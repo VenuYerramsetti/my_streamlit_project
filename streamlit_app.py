@@ -1,14 +1,16 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import streamlit as st
 import yfinance as yf
-from prophet import Prophet
-from prophet.plot import plot_plotly
+from datetime import datetime
 import pandas as pd
+import plotly.graph_objs as go
+
+# Prophet import with fallback
+try:
+    from prophet import Prophet
+except ImportError:
+    from fbprophet import Prophet
+
+from prophet.plot import plot_plotly
 
 st.set_page_config(page_title="📈 Stock Price Forecast App")
 st.title("📈 Stock Price Forecast App")
@@ -27,10 +29,10 @@ forecast_options = {
 forecast_choice = st.sidebar.selectbox("Forecast period", list(forecast_options.keys()))
 period = forecast_options[forecast_choice]
 
-@st.cache(ttl=3600)
+@st.cache_data(ttl=3600)
 def load_data(ticker_symbol):
     try:
-        data = yf.download(ticker_symbol, auto_adjust=True)
+        data = yf.download(ticker_symbol, period="5y", auto_adjust=True)
         data.reset_index(inplace=True)
         return data
     except Exception as e:
@@ -40,14 +42,11 @@ def load_data(ticker_symbol):
 df = load_data(ticker)
 
 if df is not None and not df.empty:
-    # Filter to last 3 years max to avoid huge data and memory issues
     max_history_days = 365 * 3
     df = df.tail(max_history_days)
 
-    # Find Close price column
     close_col = None
     if isinstance(df.columns, pd.MultiIndex):
-        # Flatten MultiIndex columns
         df.columns = [' '.join(col).strip() for col in df.columns.values]
     for col in df.columns:
         if 'Close' in col:
@@ -86,16 +85,3 @@ if df is not None and not df.empty:
             st.error(f"Error during forecasting or plotting: {e}")
 else:
     st.warning("No data available. Please check the stock ticker symbol.")
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
