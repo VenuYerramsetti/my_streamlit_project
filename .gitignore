@@ -1,18 +1,22 @@
-
-# Python
+# Python cache
 __pycache__/
 *.py[cod]
 
-# Virtual env
+# Virtual environment
 venv/
 
-# Streamlit cache and logs
-.streamlit/
+# Streamlit logs
 logs/
+
+# Allow tracking of config.toml
+!.streamlit/config.toml
+
+# Ignore everything else in .streamlit
+.streamlit/*
 
 # Jupyter
 .ipynb_checkpoints/
 
-# OS
+# OS-specific files
 .DS_Store
 Thumbs.db
