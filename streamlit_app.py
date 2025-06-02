@@ -1,6 +1,5 @@
 import streamlit as st
 import yfinance as yf
-from datetime import datetime
 import pandas as pd
 import plotly.graph_objs as go
 
@@ -42,8 +41,7 @@ def load_data(ticker_symbol):
 df = load_data(ticker)
 
 if df is not None and not df.empty:
-    max_history_days = 365 * 3
-    df = df.tail(max_history_days)
+    df = df.tail(365 * 3)  # Keep last 3 years
 
     close_col = None
     if isinstance(df.columns, pd.MultiIndex):
