@@ -5,8 +5,8 @@ This Streamlit app forecasts stock prices using **Yahoo Finance** 📊, **Facebo
 ## ✨ Features
 
 * **Historical Data Retrieval:** Instantly fetch historical stock data from Yahoo Finance. 📅
-* **Intelligent Forecasting:** Utilize Facebook Prophet for robust future stock price predictions. 🧙‍♂️
-* **Interactive Visualizations:** Explore forecasts with dynamic and interactive plots powered by Plotly. 📊
+* **Intelligent Forecasting:** Utilise Facebook Prophet for robust future stock price predictions. 🧙‍♂️
+* **Interactive Visualisations:** Explore forecasts with dynamic and interactive plots powered by Plotly. 📊
 * **Clean User Interface:** Enjoy a simple, intuitive, and responsive UI built with Streamlit. ✨
 
 ## 📦 Requirements
@@ -94,4 +94,16 @@ Streamlit Cloud will automatically handle dependency installation (from requirem
 #### Access Your Live App:
 Once deployed, you'll receive a unique public URL (e.g., https://myappproject-7c9u8eswocggx2pnvdnvmp.streamlit.app/) where your app will be live and accessible to anyone! ✅
 
----
+
+## 📊 What the Output Shows
+
+When you run the Streamlit Stock Forecast App, you'll see several key outputs designed to provide a comprehensive view of the stock's performance and future predictions:
+
+**Interactive Forecast Plot:** This is a Plotly chart displaying both the historical closing prices of the stock and the forecasted future prices. It includes shaded regions representing the confidence intervals (yhat_lower and yhat_upper), showing the probable range of future prices.
+**Forecast Components:** Powered by Facebook Prophet, this section breaks down the forecast into its underlying drivers. You'll typically see:
+Trend: The overall long-term direction of the stock price (upward, downward, or flat).
+**Seasonality (Weekly/Yearly):** Any recurring patterns in the stock price that repeat on a weekly or yearly basis.
+**Raw Forecast Data Table:** A detailed table showing the precise forecasted values. For each future date (ds), you'll see the predicted price (yhat) and its lower (yhat_lower) and upper (yhat_upper) confidence bounds.
+**Data Used for Forecasting:** A snippet of the historical data (ds, y) that was fed into the Prophet model. This helps confirm the input.
+**Error Messages:** If an invalid ticker is entered or data cannot be fetched, clear error or warning messages will be displayed, guiding the user to correct the input.
+This output provides a clear and interactive way to understand the past behaviour of a stock and its potential future trajectory based on the forecasting model.
